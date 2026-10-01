@@ -1,0 +1,25 @@
+<div class="shopping-card">
+  <h2 class="shopping-title">Liste de courses</h2>
+  <p class="shopping-subtitle">Ajoutez les articles dont vous avez besoin.</p>
+
+  <!-- Using a form lets the user press Enter to add an item -->
+  <form class="add-row" (ngSubmit)="addList()">
+    <input
+      class="form-control add-input"
+      [(ngModel)]="newItemName"
+      name="newItemName"
+      placeholder="Enter item name"
+      autocomplete="off"
+    />
+    <button type="submit" class="btn add-btn">Ajouter</button>
+  </form>
+
+  <div class="items">
+    <app-list-element
+      *ngFor="let item of listes"
+      [list]="item"
+      (fireDelete)="deleteItem(item)"
+    ></app-list-element>
+  </div>
+
+</div>
